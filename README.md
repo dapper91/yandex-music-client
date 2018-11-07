@@ -77,7 +77,7 @@ Creates a client instance and authenticates on the service:
 
 ```python
 
-client = YaMusicClient('dima', 'password123')
+client = YaMusicClient('user', 'password')
 
 ```
 
