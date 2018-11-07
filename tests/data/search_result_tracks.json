@@ -1,0 +1,1048 @@
+{
+    "invocationInfo": {
+        "exec-duration-millis": "64",
+        "hostname": "sas2-7043-fe8-sas-music-stable-0b1-20086.gencfg-c.yandex.net",
+        "req-id": "0953e312c621e1fc1cf98fea0a910c03"
+    },
+    "result": {
+        "page": 0,
+        "perPage": 20,
+        "searchRequestId": "sas2-7043-fe8-sas-music-stable-0b1-20086.gencfg-c.yandex.net-0953e312c621e1fc1cf98fea0a910c03-1541611887130",
+        "text": "Coldplay - Clocks",
+        "tracks": {
+            "perPage": 20,
+            "results": [
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/42108/c9ce17df.a.34291-1/%%",
+                            "genre": "rock",
+                            "id": 34291,
+                            "originalReleaseYear": 2002,
+                            "storageDir": "c9ce17df.a.34291",
+                            "title": "A Rush Of Blood To The Head",
+                            "trackCount": 11,
+                            "trackPosition": {
+                                "index": 5,
+                                "volume": 1
+                            },
+                            "year": 2002
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "f3a0e93f.p.671/",
+                                "type": "from-artist-photos",
+                                "uri": "avatars.yandex.net/get-music-content/49707/f3a0e93f.p.671/%%"
+                            },
+                            "decomposed": [],
+                            "id": 671,
+                            "name": "Coldplay",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 307510,
+                    "explicit": false,
+                    "id": 326921,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "37289_9a014c5b.391983.326921",
+                    "title": "Clocks"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/63210/608cacd4.a.34487-1/%%",
+                            "genre": "rock",
+                            "id": 34487,
+                            "originalReleaseYear": 2003,
+                            "storageDir": "608cacd4.a.34487",
+                            "title": "Clocks",
+                            "trackCount": 2,
+                            "trackPosition": {
+                                "index": 1,
+                                "volume": 1
+                            },
+                            "year": 2003
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "f3a0e93f.p.671/",
+                                "type": "from-artist-photos",
+                                "uri": "avatars.yandex.net/get-music-content/49707/f3a0e93f.p.671/%%"
+                            },
+                            "decomposed": [],
+                            "id": 671,
+                            "name": "Coldplay",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 252660,
+                    "explicit": false,
+                    "id": 341451,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "66174_e64af71c.392817.341451",
+                    "title": "Clocks (Radio Edit)",
+                    "version": "из фильма «Афера»"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/63210/37e859e3.a.75046-1/%%",
+                            "genre": "pop",
+                            "id": 75046,
+                            "originalReleaseYear": 2010,
+                            "storageDir": "37e859e3.a.75046",
+                            "title": "Revival",
+                            "trackCount": 15,
+                            "trackPosition": {
+                                "index": 11,
+                                "volume": 1
+                            },
+                            "year": 2010
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "37e859e3.a.75046-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/63210/37e859e3.a.75046-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 35393,
+                            "name": "Rhythms Del Mundo",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "f3a0e93f.p.671/",
+                                "type": "from-artist-photos",
+                                "uri": "avatars.yandex.net/get-music-content/49707/f3a0e93f.p.671/%%"
+                            },
+                            "decomposed": [],
+                            "id": 671,
+                            "name": "Coldplay",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "284445f9.a.4728629-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/98892/284445f9.a.4728629-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 21363,
+                            "name": "Lele",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 238630,
+                    "explicit": false,
+                    "id": 684783,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "108965_a292d38c.952758.1.684783",
+                    "title": "Clocks/Relojes (feat. Coldplay & Lele)",
+                    "version": "Haitian Mix"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/117546/b3fe4419.a.1548749-4/%%",
+                            "genre": "pop",
+                            "id": 1548749,
+                            "originalReleaseYear": 2013,
+                            "storageDir": "b3fe4419.a.1548749",
+                            "title": "Ultimate Chart Hits on Piano",
+                            "trackCount": 15,
+                            "trackPosition": {
+                                "index": 4,
+                                "volume": 1
+                            },
+                            "year": 2013
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "59cb5dd6.a.1930118-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/34131/59cb5dd6.a.1930118-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 2203233,
+                            "name": "The Piano Man",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 214410,
+                    "explicit": false,
+                    "id": 14222562,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "911485_512419b7.59116011.1.14222562",
+                    "title": "Clocks",
+                    "version": "Originally Performed By Coldplay"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/176019/b2875763.a.5857653-1/%%",
+                            "genre": "pop",
+                            "id": 5857653,
+                            "originalReleaseYear": 2018,
+                            "storageDir": "b2875763.a.5857653",
+                            "title": "Lounge Playlist for Studying",
+                            "trackCount": 22,
+                            "trackPosition": {
+                                "index": 2,
+                                "volume": 1
+                            },
+                            "year": 2018
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "c5294338.a.4082963-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/114728/c5294338.a.4082963-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 4855680,
+                            "name": "The Chill Out Music Society",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 312920,
+                    "explicit": false,
+                    "id": 43866997,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "100749_a1c84e70.65538315.1.43866997",
+                    "title": "Clocks [Coldplay Cover]",
+                    "version": "Indian Chillout Version"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/38044/200aa6b8.a.128712-2/%%",
+                            "genre": "classical",
+                            "id": 128712,
+                            "originalReleaseYear": 2010,
+                            "storageDir": "200aa6b8.a.128712",
+                            "title": "100 Must Have Classical Songs A-Z",
+                            "trackCount": 100,
+                            "trackPosition": {
+                                "index": 100,
+                                "volume": 1
+                            },
+                            "year": 2010
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "76fe01d5.a.4803574-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/118603/76fe01d5.a.4803574-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 623,
+                            "name": "Chris Martin",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "decomposed": [],
+                            "id": 638,
+                            "name": "Guy Berryman",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "decomposed": [],
+                            "id": 630,
+                            "name": "Jonny Buckland",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "decomposed": [],
+                            "id": 609,
+                            "name": "Will Champion",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "d57b0964.a.293819-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/33216/d57b0964.a.293819-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 308556,
+                            "name": "The Orchestral Academy Of Los Angeles",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "decomposed": [],
+                            "id": 308574,
+                            "name": "Jurgen Johannes",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 264200,
+                    "explicit": false,
+                    "id": 1185059,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "49606_d8a01ac8.29198786.1.1185059",
+                    "title": "Clocks (Made Famous by Coldplay)"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/49707/5c56f9fc.a.767285-1/%%",
+                            "genre": "classical",
+                            "id": 767285,
+                            "originalReleaseYear": 2002,
+                            "storageDir": "5c56f9fc.a.767285",
+                            "title": "The String Quartet Tribute To Coldplay",
+                            "trackCount": 10,
+                            "trackPosition": {
+                                "index": 4,
+                                "volume": 1
+                            },
+                            "year": 2002
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "1cb0de0c.a.4478873-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/49707/1cb0de0c.a.4478873-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 144018,
+                            "name": "Vitamin String Quartet",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 302110,
+                    "explicit": false,
+                    "id": 7240026,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "53840_26359ede.9595059.1.7240026",
+                    "title": "Clocks"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/103235/3dea09e3.a.5384858-1/%%",
+                            "genre": "pop",
+                            "id": 5384858,
+                            "originalReleaseYear": 2018,
+                            "storageDir": "3dea09e3.a.5384858",
+                            "title": "Highlights of Afternoon Acoustic, Vol. 2",
+                            "trackCount": 30,
+                            "trackPosition": {
+                                "index": 15,
+                                "volume": 1
+                            },
+                            "year": 2018
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "19b9c134.a.4525147-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/192707/19b9c134.a.4525147-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 3738072,
+                            "name": "Afternoon Acoustic",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 312920,
+                    "explicit": false,
+                    "id": 41210428,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "469042_54c1e88b.62087834.1.41210428",
+                    "title": "Clocks [Coldplay Cover]",
+                    "version": "Indian Chillout Version"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/42108/96b68f28.a.386434-1/%%",
+                            "genre": "children",
+                            "id": 386434,
+                            "originalReleaseYear": 2011,
+                            "storageDir": "96b68f28.a.386434",
+                            "title": "Coldplay Para Bebês",
+                            "trackCount": 13,
+                            "trackPosition": {
+                                "index": 5,
+                                "volume": 1
+                            },
+                            "year": 2011
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "5c1840d1.a.1876979-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/49707/5c1840d1.a.1876979-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 266189,
+                            "name": "Sweet Little Band",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 177530,
+                    "explicit": false,
+                    "id": 1634811,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "115271_6cb140b3.31973194.1.1634811",
+                    "title": "Clocks"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/193823/5cd96037.a.5301307-1/%%",
+                            "genre": "pop",
+                            "id": 5301307,
+                            "originalReleaseYear": 2018,
+                            "storageDir": "5cd96037.a.5301307",
+                            "title": "Highlights of Relaxation Study Music, Vol. 1",
+                            "trackCount": 24,
+                            "trackPosition": {
+                                "index": 1,
+                                "volume": 1
+                            },
+                            "year": 2018
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "de4b6577.a.2946988-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/38044/de4b6577.a.2946988-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 3371851,
+                            "name": "Relaxation Study Music",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 312920,
+                    "explicit": false,
+                    "id": 40719064,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "1138070_972c593c.61486604.1.40719064",
+                    "title": "Clocks [Coldplay Cover]",
+                    "version": "Indian Chillout Version"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/193823/b5077275.a.4106792-1/%%",
+                            "genre": "pop",
+                            "id": 4106792,
+                            "originalReleaseYear": 2017,
+                            "storageDir": "b5077275.a.4106792",
+                            "title": "The Chill Out Music Initiative, Vol. 3 (Today's Hits In a Chill Out Style)",
+                            "trackCount": 15,
+                            "trackPosition": {
+                                "index": 7,
+                                "volume": 1
+                            },
+                            "year": 2017
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "b81b06e8.a.4683678-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/142001/b81b06e8.a.4683678-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 668076,
+                            "name": "Cover Guru",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 312920,
+                    "explicit": false,
+                    "id": 33559400,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "57122_91c92188.49750069.2.33559400",
+                    "title": "Clocks [Coldplay Cover]",
+                    "version": "Indian Chillout Version"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/41288/a4b86770.a.203170-1/%%",
+                            "id": 203170,
+                            "originalReleaseYear": 2008,
+                            "storageDir": "a4b86770.a.203170",
+                            "title": "Sing Tenor Rock, Vol. 8",
+                            "trackCount": 15,
+                            "trackPosition": {
+                                "index": 5,
+                                "volume": 1
+                            },
+                            "year": 2008
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "ebd2797e.a.106175-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/28589/ebd2797e.a.106175-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 156849,
+                            "name": "Karaoke",
+                            "various": true
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 254590,
+                    "explicit": false,
+                    "id": 2054111,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "369874_8d501b71.2609663.1.2054111",
+                    "title": "Clocks [In the Style of Coldplay]",
+                    "version": "Karaoke Instrumental Track"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "contentWarning": "explicit",
+                            "coverUri": "avatars.yandex.net/get-music-content/49707/4d15ad3d.a.2408708-1/%%",
+                            "id": 2408708,
+                            "originalReleaseYear": 2011,
+                            "storageDir": "4d15ad3d.a.2408708",
+                            "title": "The Karaoke Channel - The Best Of Coldplay",
+                            "trackCount": 14,
+                            "trackPosition": {
+                                "index": 5,
+                                "volume": 1
+                            },
+                            "year": 2011
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "ebd2797e.a.106175-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/28589/ebd2797e.a.106175-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 156849,
+                            "name": "Karaoke",
+                            "various": true
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 314980,
+                    "explicit": false,
+                    "id": 2848490,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "767061_e9c3d2c0.30122691.1.2848490",
+                    "title": "Clocks [In the Style of Coldplay] {Karaoke Version}",
+                    "version": "Karaoke Version"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/28589/852229b3.a.137228-2/%%",
+                            "genre": "classical",
+                            "id": 137228,
+                            "originalReleaseYear": 2008,
+                            "storageDir": "852229b3.a.137228",
+                            "title": "The Most Relaxing Piano Classics Ever Made",
+                            "trackCount": 47,
+                            "trackPosition": {
+                                "index": 3,
+                                "volume": 1
+                            },
+                            "year": 2008
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "12d28e9d.a.1850401-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/34131/12d28e9d.a.1850401-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 297777,
+                            "name": "The Piano Classic Players",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 264200,
+                    "explicit": false,
+                    "id": 1296959,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "132817_b3af9bde.44236034.1.1296959",
+                    "title": "Clocks (made famous by Coldplay)"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "contentWarning": "explicit",
+                            "coverUri": "avatars.yandex.net/get-music-content/49707/4d15ad3d.a.2408708-1/%%",
+                            "id": 2408708,
+                            "originalReleaseYear": 2011,
+                            "storageDir": "4d15ad3d.a.2408708",
+                            "title": "The Karaoke Channel - The Best Of Coldplay",
+                            "trackCount": 14,
+                            "trackPosition": {
+                                "index": 6,
+                                "volume": 1
+                            },
+                            "year": 2011
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "3a2f1bc1.a.2459610-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/32236/3a2f1bc1.a.2459610-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 628618,
+                            "name": "Done Again",
+                            "various": true
+                        },
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "b5762a55.a.2270352-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/42108/b5762a55.a.2270352-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 448346,
+                            "name": "Stingray Music",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 314850,
+                    "explicit": false,
+                    "id": 2848492,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "508349_32f7441b.30122692.1.2848492",
+                    "title": "Clocks [In the Style of Coldplay] {Karaoke Lead Vocal Version}",
+                    "version": "Karaoke Demonstration With Lead Vocal"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/139444/e9017adb.a.5277179-1/%%",
+                            "genre": "pop",
+                            "id": 5277179,
+                            "originalReleaseYear": 2018,
+                            "storageDir": "e9017adb.a.5277179",
+                            "title": "Piano Covers of Hit Songs, Vol. 3",
+                            "trackCount": 27,
+                            "trackPosition": {
+                                "index": 8,
+                                "volume": 1
+                            },
+                            "year": 2018
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "4aaf34bc.a.2880387-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/33216/4aaf34bc.a.2880387-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 26483,
+                            "name": "Instrumental",
+                            "various": true
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 262160,
+                    "explicit": false,
+                    "id": 40562831,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "1136561_cf8c5729.61302132.2.40562831",
+                    "title": "Clocks [Made Famous by Coldplay]",
+                    "version": "Piano Version"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/63210/8c63201b.a.42944-1/%%",
+                            "genre": "rock",
+                            "id": 42944,
+                            "originalReleaseYear": 2003,
+                            "storageDir": "8c63201b.a.42944",
+                            "title": "Clocks",
+                            "trackCount": 3,
+                            "trackPosition": {
+                                "index": 3,
+                                "volume": 1
+                            },
+                            "year": 2003
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "f3a0e93f.p.671/",
+                                "type": "from-artist-photos",
+                                "uri": "avatars.yandex.net/get-music-content/49707/f3a0e93f.p.671/%%"
+                            },
+                            "decomposed": [],
+                            "id": 671,
+                            "name": "Coldplay",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 333320,
+                    "explicit": false,
+                    "id": 416967,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "62698_443b47d4.556477.1.416967",
+                    "title": "Animals"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/32236/ab22e677.a.139339-1/%%",
+                            "genre": "newage",
+                            "id": 139339,
+                            "originalReleaseYear": 2009,
+                            "storageDir": "ab22e677.a.139339",
+                            "title": "Classical Spa Relaxation Collection",
+                            "trackCount": 100,
+                            "trackPosition": {
+                                "index": 38,
+                                "volume": 2
+                            },
+                            "year": 2009
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "76fe01d5.a.4803574-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/118603/76fe01d5.a.4803574-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 623,
+                            "name": "Chris Martin",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "decomposed": [],
+                            "id": 638,
+                            "name": "Guy Berryman",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "decomposed": [],
+                            "id": 630,
+                            "name": "Jonny Buckland",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "decomposed": [],
+                            "id": 609,
+                            "name": "Will Champion",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "a4b62019.a.328701-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/42108/a4b62019.a.328701-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 296410,
+                            "name": "St. Martin’s Symphony Of Los Angeles",
+                            "various": false
+                        },
+                        {
+                            "composer": false,
+                            "decomposed": [],
+                            "id": 2929935,
+                            "name": "British String Ensemble",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 264200,
+                    "explicit": false,
+                    "id": 1327947,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "61157_3fe8ee78.1756326.1.1327947",
+                    "title": "Clocks (made famous by Coldplay)"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/117546/f6322fc7.a.5300717-1/%%",
+                            "genre": "pop",
+                            "id": 5300717,
+                            "originalReleaseYear": 2018,
+                            "storageDir": "f6322fc7.a.5300717",
+                            "title": "Highlights of It's a Cover up, Vol. 2",
+                            "trackCount": 30,
+                            "trackPosition": {
+                                "index": 5,
+                                "volume": 1
+                            },
+                            "year": 2018
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "59909a41.a.506032-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/34131/59909a41.a.506032-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 815214,
+                            "name": "It's a Cover Up",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 262160,
+                    "explicit": false,
+                    "id": 40715652,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "516331_7b61bac4.61482198.1.40715652",
+                    "title": "Clocks [Made Famous by Coldplay]",
+                    "version": "Piano Version"
+                },
+                {
+                    "albums": [
+                        {
+                            "artists": [],
+                            "available": true,
+                            "coverUri": "avatars.yandex.net/get-music-content/34131/6507dbca.a.4098702-1/%%",
+                            "genre": "pop",
+                            "id": 4098702,
+                            "originalReleaseYear": 2017,
+                            "storageDir": "6507dbca.a.4098702",
+                            "title": "The Chill Out Music Initiative, Vol. 3 (Today's Hits In a Chill Out Style)",
+                            "trackCount": 15,
+                            "trackPosition": {
+                                "index": 7,
+                                "volume": 1
+                            },
+                            "year": 2017
+                        }
+                    ],
+                    "artists": [
+                        {
+                            "composer": false,
+                            "cover": {
+                                "prefix": "02db6e46.a.2745179-1",
+                                "type": "from-album-cover",
+                                "uri": "avatars.yandex.net/get-music-content/32236/02db6e46.a.2745179-1/%%"
+                            },
+                            "decomposed": [],
+                            "id": 675824,
+                            "name": "Todays Hits",
+                            "various": false
+                        }
+                    ],
+                    "available": true,
+                    "availableAsRbt": false,
+                    "durationMs": 312920,
+                    "explicit": false,
+                    "id": 33489973,
+                    "regions": [
+                        "RUSSIA",
+                        "RUSSIA_PREMIUM"
+                    ],
+                    "storageDir": "54739_6d8f317c.49670230.2.33489973",
+                    "title": "Clocks [Coldplay Cover]",
+                    "version": "Indian Chillout Version"
+                }
+            ],
+            "total": 142
+        },
+        "type": "track"
+    }
+}
