@@ -71,20 +71,50 @@ client.add_tracks_to_playlist(playlist.kind, tracks, ignore_dublicates=True)
 
 ## API
 
-### Constructor
+### __init__(login=None, password=None, device_id=None, uuid=None, auth_data=None)
 
-Creates a client instance and authenticates on the service:
+Creates a client instance and authenticates on the service if login and password provided.
 
-```python
-
-client = YaMusicClient('user', 'password')
-
-```
-
-Constructor arguments:
+**Parameters**:
 
 - `login` - yandex account user name
 - `password` - yandex account password
+- `device_id` - local device id (will be automatically generated if ommited)
+- `uuid=None` - unique identifier (will be automatically generated if ommited)
+- `auth_data` - authentication data, (access_token, user_id) pair
+
+### auth(login, password)
+
+Authenticates on the service as a `login` user.
+
+**Parameters**:
+
+- `login` - yandex account user name
+- `password` - yandex account password
+
+### is_authenticated
+
+Check if the user is authenticated.
+
+**Returns**: True if the user is authenticated otherwise False
+
+**Return type**: bool
+
+### get_genres()
+
+Returns the service available genres list.
+
+**Returns**: The genres list
+
+**Return type**: Genre
+
+### get_playlists(user_id=None)
+
+Returns user's playlist list. If `user_id` argument is ommited current user_id is used. If user is not authenticated AttributError is raised.
+
+**Returns**: The genres list
+
+**Return type**: list of Playlist
 
 ## License
 
