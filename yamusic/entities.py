@@ -35,7 +35,7 @@ class SearchType(enum.Enum):
     track = 3
 
 
-@attr.s
+@attr.s(frozen=True)
 class Genre(object):
     id          = attr.ib(type=int, cmp=True)
     title       = attr.ib(type=str, cmp=False)
@@ -46,7 +46,7 @@ class Genre(object):
         return self.title
 
 
-@attr.s
+@attr.s(frozen=True)
 class User(object):
     uid         = attr.ib(type=int, cmp=True)
     login       = attr.ib(type=str, cmp=False)
@@ -58,19 +58,20 @@ class User(object):
         return "{} - '{}'".format(self.login, self.name)
 
 
-@attr.s
+@attr.s(frozen=True)
 class Album(object):
     id          = attr.ib(type=int, cmp=True)
     title       = attr.ib(type=str, cmp=False)
     year        = attr.ib(type=int, cmp=False)
     trackCount  = attr.ib(type=int, cmp=False)
     genre       = attr.ib(type=str, cmp=False)
+    releaseDate = attr.ib(type=datetime, cmp=False)
 
     def __str__(self):
         return "{} ({})".format(self.title, self.year)
 
 
-@attr.s
+@attr.s(frozen=True)
 class Artist(object):
     id          = attr.ib(type=int, cmp=True)
     name        = attr.ib(type=str, cmp=False)
@@ -81,7 +82,7 @@ class Artist(object):
         return self.name
 
 
-@attr.s
+@attr.s(frozen=True)
 class Track(object):
     id          = attr.ib(type=int, cmp=True)
     title       = attr.ib(type=str, cmp=False)
@@ -98,7 +99,7 @@ class Track(object):
         )
 
 
-@attr.s
+@attr.s(frozen=True)
 class Playlist(object):
     kind        = attr.ib(type=int, cmp=True)
     title       = attr.ib(type=str, cmp=False)

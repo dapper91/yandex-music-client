@@ -108,6 +108,7 @@ class AlbumSchema(BaseSchema):
     id          = fields.Int(required=True)
     title       = fields.Str(required=True)
     year        = fields.Int(missing=None)
+    releaseDate = fields.DateTime(required=False, missing=None)
     trackCount  = fields.Int(required=True)
     genre       = fields.Str(required=False, missing=None)
 

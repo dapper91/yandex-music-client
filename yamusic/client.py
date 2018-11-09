@@ -150,6 +150,9 @@ class YaMusicClient(object):
         
         playlist = self.get_playlist(playlist_id)
 
+        if ignore_dublicates:
+            tracks = set(tracks) - set(playlist.tracks)
+
         cur_revision = playlist.revision
 
         diff = [{
@@ -158,7 +161,7 @@ class YaMusicClient(object):
             'tracks': [{
                 'id': track.id,
                 'albumid': track.albums[0].id
-            } for track in tracks if not (ignore_dublicates and track in playlist.tracks)]
+            } for track in tracks]
         }]
 
         data = {
@@ -212,3 +215,17 @@ class YaMusicClient(object):
 
     def search_track(self, title, page=0):
         return self.search(title, SearchType.track, page).tracks
+
+    def get_album(self, album_id, with_tracks=False):
+        path = 'albums/{album_id}'.format(album_id=album_id)
+
+        resp = self._request('GET', self.API_HOST, path)
+
+        return AlbumSchema(envelope='result').loads(resp.text).data
+
+    def get_similar_tracks(self, track_id):
+        path = 'tracks/{track_id}/similar'.format(track_id=track_id)
+
+        resp = self._request('GET', self.API_HOST, path)
+
+        return TrackSchema(many_envelope='result', envelope='track').loads(resp.text).data
