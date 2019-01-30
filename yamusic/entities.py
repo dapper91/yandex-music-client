@@ -1,8 +1,7 @@
 import attr
+import datetime
 import enum
-from datetime import datetime
-from typing import List, Optional
-
+import typing
 
 __all__ = [
     'Visability',
@@ -65,7 +64,7 @@ class Album(object):
     year        = attr.ib(type=int, cmp=False)
     trackCount  = attr.ib(type=int, cmp=False)
     genre       = attr.ib(type=str, cmp=False)
-    releaseDate = attr.ib(type=datetime, cmp=False)
+    releaseDate = attr.ib(type=datetime.datetime, cmp=False)
 
     def __str__(self):
         return "{} ({})".format(self.title, self.year)
@@ -76,7 +75,7 @@ class Artist(object):
     id          = attr.ib(type=int, cmp=True)
     name        = attr.ib(type=str, cmp=False)
     composer    = attr.ib(type=bool, cmp=False)
-    genres      = attr.ib(type=List[str], cmp=False)
+    genres      = attr.ib(type=typing.List[str], cmp=False)
 
     def __str__(self):
         return self.name
@@ -87,13 +86,13 @@ class Track(object):
     id          = attr.ib(type=int, cmp=True)
     title       = attr.ib(type=str, cmp=False)
     durationMs  = attr.ib(type=int, cmp=False)
-    albums      = attr.ib(type=List[Album], cmp=False)
-    artists     = attr.ib(type=List[Artist], cmp=False)
+    albums      = attr.ib(type=typing.List[Album], cmp=False)
+    artists     = attr.ib(type=typing.List[Artist], cmp=False)
     available   = attr.ib(type=bool, cmp=False)
 
     def __str__(self):
         return "{} - {} ({})".format(
-            self.title, 
+            self.title,
             ', '.join(str(artist) for artist in self.artists),
             ', '.join(str(album) for album in self.albums)
         )
@@ -103,13 +102,13 @@ class Track(object):
 class Playlist(object):
     kind        = attr.ib(type=int, cmp=True)
     title       = attr.ib(type=str, cmp=False)
-    created     = attr.ib(type=datetime, cmp=False)
-    modified    = attr.ib(type=datetime, cmp=False)
+    created     = attr.ib(type=datetime.datetime, cmp=False)
+    modified    = attr.ib(type=datetime.datetime, cmp=False)
     trackCount  = attr.ib(type=int, cmp=False)
     durationMs  = attr.ib(type=int, cmp=False)
     visibility  = attr.ib(type=Visability, cmp=False)
     owner       = attr.ib(type=User, cmp=False)
-    tracks      = attr.ib(type=Optional[List[Track]], cmp=False)
+    tracks      = attr.ib(type=typing.Optional[typing.List[Track]], cmp=False)
     revision    = attr.ib(type=int, cmp=False)
 
     def __str__(self):
