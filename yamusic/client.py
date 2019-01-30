@@ -69,7 +69,7 @@ class YaMusicClient(object):
         }
 
         try:
-            resp = self._request('POST', self.OAUTH_HOST, '1/token', params=params, data=data)
+            resp = self._request('POST', self.OAUTH_HOST, '1/token', params=params, data=data).json()
             self._access_token, self._user_id = resp.get('access_token'), resp.get('uid')
             
             if self._access_token is None or self._user_id is None:
@@ -77,6 +77,9 @@ class YaMusicClient(object):
 
         except requests.HTTPError as e:
             raise AuthenticationError("oauth token request error") from e
+
+        except ValueError as e:
+            raise ResponseFormatError("response body format error") from e
 
     @property
     def is_authenticated(self):
