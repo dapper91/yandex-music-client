@@ -1,4 +1,8 @@
-from yamusic import YaMusicClient
+"""
+Quick start example.
+"""
+
+from yamusic.client import YaMusicClient
 
 
 client = YaMusicClient('user', 'password')
@@ -11,7 +15,6 @@ for playlist in client.get_playlists():
     )
 
 
-
 playlist_name = 'Folk'
 print("{} playlist:".format(playlist_name))
 
@@ -21,7 +24,6 @@ for track in client.get_playlist_by_title(playlist_name).tracks:
         authors=', '.join(track.authors), 
         albums=', '.join(track.albums))
     )
-
 
 
 playlist = client.create_playlist('Russian Rock')
@@ -36,4 +38,4 @@ tracks = [
     ]
 ]
     
-client.add_tracks_to_playlist(playlist.kind, tracks, ignore_dublicates=True)
+client.add_tracks_to_playlist(playlist.kind, tracks, ignore_duplicates=True)

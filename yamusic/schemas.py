@@ -1,3 +1,7 @@
+"""
+Service entities serialization schemas.
+"""
+
 import marshmallow as mm
 import marshmallow.exceptions as mme
 
@@ -17,6 +21,10 @@ __all__ = [
 
 
 class EnumField(mm.fields.Field):
+    """
+    Serializable enum field.
+    """
+
     def __init__(self, enum, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._enum = enum
@@ -29,9 +37,20 @@ class EnumField(mm.fields.Field):
 
 
 class BaseSchema(mm.Schema):
+    """
+    Base serialization schema. All schemas should be inherited from it.
+    """
+
     __object__ = None
 
     def __init__(self, *args, envelope=None, many_envelope=None, **kwargs):
+        """
+        :param args: positional arguments to be passed to `marshmallow.Schema`
+        :param envelope: field that contains an object data
+        :param many_envelope: field that contains a list of object if `many` argument is `True`
+        :param kwargs: named arguments to be passed to `marshmallow.Schema`
+        """
+
         super().__init__(self, *args, **kwargs)
         self.__envelope = {
             'one': envelope,
@@ -76,6 +95,10 @@ class BaseSchema(mm.Schema):
 
 
 class GenreSchema(BaseSchema):
+    """
+    Genre entity serialization schema.
+    """
+
     __object__  = entities.Genre
 
     id          = mm.fields.Str(required=True)
@@ -85,6 +108,10 @@ class GenreSchema(BaseSchema):
 
 
 class UserSchema(BaseSchema):
+    """
+    User entity serialization schema.
+    """
+
     __object__  = entities.User
 
     uid         = mm.fields.Int(required=True)
@@ -95,6 +122,10 @@ class UserSchema(BaseSchema):
 
 
 class AlbumSchema(BaseSchema):
+    """
+    Album entity serialization schema.
+    """
+
     __object__  = entities.Album
 
     id          = mm.fields.Int(required=True)
@@ -106,6 +137,10 @@ class AlbumSchema(BaseSchema):
 
 
 class ArtistSchema(BaseSchema):
+    """
+    Artist entity serialization schema.
+    """
+
     __object__  = entities.Artist
 
     id          = mm.fields.Int(required=True)
@@ -115,6 +150,10 @@ class ArtistSchema(BaseSchema):
 
 
 class TrackSchema(BaseSchema):
+    """
+    Track entity serialization schema.
+    """
+
     __object__  = entities.Track
 
     id          = mm.fields.Int(required=True)
@@ -126,6 +165,10 @@ class TrackSchema(BaseSchema):
 
 
 class PlaylistSchema(BaseSchema):
+    """
+    Playlist entity serialization schema.
+    """
+
     __object__  = entities.Playlist
 
     title       = mm.fields.Str(required=True)
@@ -134,14 +177,18 @@ class PlaylistSchema(BaseSchema):
     modified    = mm.fields.DateTime(required=False, missing=None)
     trackCount  = mm.fields.Int(required=True)
     durationMs  = mm.fields.Int(required=False, missing=None)
-    visibility  = EnumField(entities.Visability, required=False, missing=None)
+    visibility  = EnumField(entities.Visibility, required=False, missing=None)
     owner       = mm.fields.Nested(UserSchema, required=True)
     tracks      = mm.fields.Nested(TrackSchema(envelope='track', many=True), missing=None)
     revision    = mm.fields.Int(required=False, missing=None)
 
 
 class SearchResultSchema(BaseSchema):
+    """
+    Search result entity serialization schema.
+    """
+
     albums      = mm.fields.Nested(AlbumSchema(many_envelope='results', many=True), required=False, missing={'results': []})
-    artists     = mm.fields.Nested(ArtistSchema(many_envelope='results',many=True), required=False, missing={'results': []})
-    playlists   = mm.fields.Nested(PlaylistSchema(many_envelope='results',many=True), required=False, missing={'results': []})
-    tracks      = mm.fields.Nested(TrackSchema(many_envelope='results',many=True), required=False, missing={'results': []})
+    artists     = mm.fields.Nested(ArtistSchema(many_envelope='results', many=True), required=False, missing={'results': []})
+    playlists   = mm.fields.Nested(PlaylistSchema(many_envelope='results', many=True), required=False, missing={'results': []})
+    tracks      = mm.fields.Nested(TrackSchema(many_envelope='results', many=True), required=False, missing={'results': []})

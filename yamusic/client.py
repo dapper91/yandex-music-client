@@ -1,3 +1,7 @@
+"""
+Yandex music service client.
+"""
+
 import json
 import requests
 import uuid
@@ -9,13 +13,31 @@ from . import schemas
 
 
 def build_url(host, path, proto='https'):
+    """
+    Builds URL based on the parameters.
+
+    :param host: URL hostname
+    :param path: URL path
+    :param proto: URL protocol
+    :return: URL string
+    """
+
     return '{proto}://{host}/{path}'.format(host=host, path=path, proto=proto)
 
+
 def generate_uuid():
+    """
+    :return: unique UUID string
+    """
+
     return str(uuid.uuid4()).replace('-', '')
 
 
 class YaMusicClient(object):
+    """
+    Yandex music service client.
+    """
+
     OAUTH_CLIENT_ID = '23cabbbdc6cd418abb4b39c32c41195d'
     OAUTH_CLIENT_SECRET = '53bc75238f0c4d08a118e51fe9203300'
 
@@ -25,6 +47,16 @@ class YaMusicClient(object):
     PACKAGE_NAME = 'ru.yandex.music'
 
     def __init__(self, login=None, password=None, device_id=None, uuid=None, auth_data=None):
+        """
+        Creates a client instance and authenticates on the service if login and password are provided.
+
+        :param login: yandex account user name
+        :param password: yandex account password
+        :param device_id: local device id (will be automatically generated if ommited)
+        :param uuid: unique identifier (will be automatically generated if ommited)
+        :param auth_data: authentication data, (access_token, user_id) pair
+        """
+
         self._logger = logger.getChild(self.__class__.__name__)
         self._login = login
         self._device_id = device_id or generate_uuid()
@@ -50,6 +82,14 @@ class YaMusicClient(object):
         return resp
 
     def auth(self, login, password):
+        """
+        Authenticates on the service as a `login` user.
+
+        :param login: yandex account user name
+        :param password: yandex account password
+        :raises: AuthenticationError if the credentials are not valid
+        """
+
         self._login = login
 
         params = {
@@ -80,15 +120,37 @@ class YaMusicClient(object):
 
     @property
     def is_authenticated(self):
+        """
+        Check if the user is authenticated.
+
+        :return: `True` if the user is authenticated otherwise `False`
+        """
+
         return self._access_token is not None and self._user_id is not None
 
     def get_genres(self):
+        """
+        Returns a list of the available genres.
+
+        :return: genre list
+        :rtype: `entities.Genre`
+        """
+
         path = 'genres'
         resp = self._request('GET', self.API_HOST, path)
 
         return schemas.GenreSchema(many_envelope='result', many=True).loads(resp.text).data
 
     def get_playlists(self, user_id=None):
+        """
+        Returns user's playlist list. If `user_id` argument is ommited current user_id is used.
+        If the user is not authenticated AttributeError is raised.
+
+        :param user_id: user id
+        :return: playlist list
+        :rtype: `List[entities.Playlist]`
+        """
+
         user_id = user_id or self._user_id
         path = 'users/{user_id}/playlists/list'.format(user_id=user_id)
         resp = self._request('GET', self.API_HOST, path)
@@ -96,6 +158,16 @@ class YaMusicClient(object):
         return schemas.PlaylistSchema(many_envelope='result', many=True).loads(resp.text).data
 
     def get_playlist(self, playlist_id, user_id=None, rich_tracks=True):
+        """
+        Returns a user playlist. If `user_id` argument is ommited current user_id is used.
+
+        :param playlist_id: playlist id
+        :param user_id: user id
+        :param rich_tracks: whether to add additional information to tracks
+        :return: the required playlist
+        :rtype: `entities.Playlist`
+        """
+
         user_id = user_id or self._user_id
         path = 'users/{user_id}/playlists'.format(user_id=user_id)
         params = {
@@ -107,6 +179,15 @@ class YaMusicClient(object):
         return schemas.PlaylistSchema(many_envelope='result', many=True).loads(resp.text).data[0]
 
     def get_playlist_by_title(self, title, user_id=None):
+        """
+        Returns a user playlist by title. If `user_id` argument is ommited current user_id is used.
+
+        :param title: playlist title
+        :param user_id: user id
+        :return: the required playlist
+        :rtype: `entities.Playlist`
+        """
+
         playlists = [playlist for playlist in self.get_playlists() if playlist.title == title]
         try:
             playlist = playlists[0]
@@ -115,7 +196,16 @@ class YaMusicClient(object):
 
         return self.get_playlist(playlist.kind, user_id)
 
-    def create_playlist(self, title, visibility=entities.Visability.private):
+    def create_playlist(self, title, visibility=entities.Visibility.private):
+        """
+        Creates a new playlist. Client should be authenticated on the service.
+
+        :param title: new playlist title
+        :param visibility: new playlist visibility
+        :return: the created playlist
+        :rtype: `entities.Playlist`
+        """
+
         path = 'users/{user_id}/playlists/create'.format(user_id=self._user_id)
         data = {
             'title': title,
@@ -126,10 +216,23 @@ class YaMusicClient(object):
         return schemas.PlaylistSchema(envelope='result').loads(resp.text).data
 
     def delete_playlist(self, playlist_id):
+        """
+        Deletes playlist by id. Client should be authenticated on the service.
+
+        :param playlist_id: playlist id
+        """
+
         path = 'users/{user_id}/playlists/{playlist_id}/delete'.format(user_id=self._user_id, playlist_id=playlist_id)
         self._request('POST', self.API_HOST, path)
 
     def rename_playlist(self, playlist_id, title):
+        """
+        Renames playlist by id. Client should be authenticated on the service.
+
+        :param playlist_id: playlist id
+        :param title: new title
+        """
+
         path = 'users/{user_id}/playlists/{playlist_id}/name'.format(user_id=self._user_id, playlist_id=playlist_id)
         data = {
             'value': title,
@@ -137,11 +240,20 @@ class YaMusicClient(object):
 
         self._request('POST', self.API_HOST, path, data=data)
 
-    def add_tracks_to_playlist(self, playlist_id, tracks, at_position=0, ignore_dublicates=False):
+    def add_tracks_to_playlist(self, playlist_id, tracks, at_position=0, ignore_duplicates=False):
+        """
+        Adds tracks to the playlist. Client should be authenticated on the service.
+
+        :param playlist_id: playlist id to add track to
+        :param tracks: track list to add playlist
+        :param at_position: position to add tracks at
+        :param ignore_duplicates: ignore duplicate tracks
+        """
+
         path = 'users/{user_id}/playlists/{playlist_id}/change-relative'.format(user_id=self._user_id, playlist_id=playlist_id)
 
         playlist = self.get_playlist(playlist_id)
-        if ignore_dublicates:
+        if ignore_duplicates:
             tracks = set(tracks) - set(playlist.tracks)
 
         cur_revision = playlist.revision
@@ -162,6 +274,14 @@ class YaMusicClient(object):
         self._request('POST', self.API_HOST, path, data=data)
 
     def delete_tracks_from_playlist(self, playlist_id, from_track, to_track):
+        """
+        Deletes tracks from playlist.
+
+        :param playlist_id: playlist id
+        :param from_track: start tracks position to delete
+        :param to_track: end tracks position to delete
+        """
+
         path = 'users/{user_id}/playlists/{playlist_id}/change-relative'.format(user_id=self._user_id, playlist_id=playlist_id)
 
         playlist = self.get_playlist(playlist_id)
@@ -180,33 +300,86 @@ class YaMusicClient(object):
 
         self._request('POST', self.API_HOST, path, data=data)
 
-    def search(self, query, search_type=entities.SearchType.all, page = 0):
+    def search(self, query, search_type=entities.SearchType.all, page=0):
+        """
+        Makes a search query.
+
+        :param query: query string
+        :param search_type: search type (all, artist, album, track)
+        :param page: result page number
+        :return: the search result
+        :rtype: `SearchResult`
+        """
+
         path = 'search'
         params = {
             'type': search_type.name,
             'text': query,
-            'page': 0
+            'page': page
         }
         resp = self._request('GET', self.API_HOST, path, params=params)
 
         return schemas.SearchResultSchema(many_envelope='result').loads(resp.text).data
 
     def search_artist(self, name, page=0):
+        """
+        Searches for the artist with name `name`.
+
+        :param name: artist name
+        :param page: result page number
+        :return: a list of the required artists
+        :rtype: `entities.Artist`
+        """
+
         return self.search(name, entities.SearchType.artist, page).artists
 
     def search_album(self, title, page=0):
+        """
+        Searches for the album with title `title`.
+
+        :param title: album title
+        :param page: result page number
+        :return: a list of the required albums
+        :rtype: `entities.Album`
+        """
+
         return self.search(title, entities.SearchType.album, page).albums
 
     def search_track(self, title, page=0):
+        """
+        Searches for the track with title `title`.
+
+        :param title: track title
+        :param page: result page number
+        :return: a list of the required tracks
+        :rtype: `entities.Track`
+        """
+
         return self.search(title, entities.SearchType.track, page).tracks
 
-    def get_album(self, album_id, with_tracks=False):
+    def get_album(self, album_id):
+        """
+        Returns the album with `album_id` id
+
+        :param album_id: album id
+        :return: the requested album
+        :rtype: `entities.Album`
+        """
+
         path = 'albums/{album_id}'.format(album_id=album_id)
         resp = self._request('GET', self.API_HOST, path)
 
         return schemas.AlbumSchema(envelope='result').loads(resp.text).data
 
     def get_similar_tracks(self, track_id):
+        """
+        Returns tracks similar to the track with 'track_id' id
+
+        :param track_id: track id
+        :return: list of similar tracks
+        :rtype: `List[entities.Track]`
+        """
+
         path = 'tracks/{track_id}/similar'.format(track_id=track_id)
         resp = self._request('GET', self.API_HOST, path)
 

@@ -1,5 +1,9 @@
+"""
+User playlists backup example.
+"""
+
 import csv
-from yamusic import YaMusicClient
+from yamusic.client import YaMusicClient
 
 
 print("Connecting to Yandex Music...")

@@ -27,7 +27,7 @@ reverse engineering research which means it can be modified any time and the cli
 
 ```python
 
-from yamusic import YaMusicClient
+from yamusic.client import YaMusicClient
 
 
 client = YaMusicClient('user', 'password')
@@ -65,7 +65,7 @@ tracks = [
     ]
 ]
     
-client.add_tracks_to_playlist(playlist.kind, tracks, ignore_dublicates=True)
+client.add_tracks_to_playlist(playlist.kind, tracks, ignore_duplicates=True)
 
 ```
 
