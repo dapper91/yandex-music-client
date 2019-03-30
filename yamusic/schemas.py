@@ -51,7 +51,7 @@ class BaseSchema(mm.Schema):
         :param kwargs: named arguments to be passed to `marshmallow.Schema`
         """
 
-        super().__init__(self, *args, **kwargs)
+        super().__init__(self, *args, strict=True, **kwargs)
         self.__envelope = {
             'one': envelope,
             'many': many_envelope

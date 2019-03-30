@@ -373,7 +373,7 @@ class YaMusicClient(object):
 
     def get_similar_tracks(self, track_id):
         """
-        Returns tracks similar to the track with 'track_id' id
+        Returns tracks similar to the track with `track_id` id
 
         :param track_id: track id
         :return: list of similar tracks
