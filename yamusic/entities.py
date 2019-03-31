@@ -8,15 +8,15 @@ import enum
 import typing
 
 __all__ = [
-    'Visibility',
-    'Sex',
-    'SearchType',
-    'Genre',
-    'User',
     'Album',
     'Artist',
-    'Track',
+    'Genre',
     'Playlist',
+    'SearchType',
+    'Sex',
+    'Track',
+    'User',
+    'Visibility',
 ]
 
 

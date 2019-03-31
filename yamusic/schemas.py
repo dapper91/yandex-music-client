@@ -9,14 +9,14 @@ from . import entities
 from . import exceptions
 
 __all__ = [
+    'AlbumSchema',
+    'ArtistSchema',
     'BaseSchema',
     'GenreSchema',
-    'UserSchema',
-    'ArtistSchema',
-    'AlbumSchema',
-    'TrackSchema',
     'PlaylistSchema',
     'SearchResultSchema',
+    'TrackSchema',
+    'UserSchema',
 ]
 
 
@@ -39,18 +39,16 @@ class EnumField(mm.fields.Field):
 class BaseSchema(mm.Schema):
     """
     Base serialization schema. All schemas should be inherited from it.
+
+    :param args: positional arguments to be passed to `marshmallow.Schema`
+    :param envelope: field that contains an object data
+    :param many_envelope: field that contains a list of objects if `many` argument is `True`
+    :param kwargs: named arguments to be passed to `marshmallow.Schema`
     """
 
     __object__ = None
 
     def __init__(self, *args, envelope=None, many_envelope=None, **kwargs):
-        """
-        :param args: positional arguments to be passed to `marshmallow.Schema`
-        :param envelope: field that contains an object data
-        :param many_envelope: field that contains a list of object if `many` argument is `True`
-        :param kwargs: named arguments to be passed to `marshmallow.Schema`
-        """
-
         super().__init__(self, *args, strict=True, **kwargs)
         self.__envelope = {
             'one': envelope,

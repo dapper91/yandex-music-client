@@ -1,10 +1,11 @@
 """
-User playlists backup example.
+User's playlists backup example.
 """
 
 import getpass
 import csv
 import sys
+
 from yamusic import client
 from yamusic import exceptions
 
@@ -23,14 +24,12 @@ except exceptions.AuthenticationError:
 
 
 with open('playlist-backup.csv', 'w', newline='') as backup_file:
-
     csv_writer = csv.DictWriter(backup_file, fieldnames=['playlist', 'artist', 'title', 'album'])
     csv_writer.writeheader()
 
     print("Downloading user's playlists...")
 
     for playlist in ym_client.get_playlists():
-
         print("Backing up '{}' playlist...".format(playlist.title))
 
         for track in ym_client.get_playlist(playlist.kind):

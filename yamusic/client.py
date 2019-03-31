@@ -2,6 +2,7 @@
 Yandex music service client.
 """
 
+import functools
 import json
 import requests
 import uuid
@@ -35,7 +36,14 @@ def generate_uuid():
 
 class YaMusicClient(object):
     """
-    Yandex music service client.
+    A Yandex music service client. Creates a client instance and authenticates
+    on the service if login and password are provided.
+
+    :param login: yandex account user name
+    :param password: yandex account password
+    :param device_id: local device id (will be automatically generated if ommited)
+    :param uuid: unique identifier (will be automatically generated if ommited)
+    :param auth_data: authentication data, (access_token, user_id) pair
     """
 
     OAUTH_CLIENT_ID = '23cabbbdc6cd418abb4b39c32c41195d'
@@ -47,16 +55,6 @@ class YaMusicClient(object):
     PACKAGE_NAME = 'ru.yandex.music'
 
     def __init__(self, login=None, password=None, device_id=None, uuid=None, auth_data=None):
-        """
-        Creates a client instance and authenticates on the service if login and password are provided.
-
-        :param login: yandex account user name
-        :param password: yandex account password
-        :param device_id: local device id (will be automatically generated if ommited)
-        :param uuid: unique identifier (will be automatically generated if ommited)
-        :param auth_data: authentication data, (access_token, user_id) pair
-        """
-
         self._logger = logger.getChild(self.__class__.__name__)
         self._login = login
         self._device_id = device_id or generate_uuid()
@@ -87,7 +85,7 @@ class YaMusicClient(object):
 
         :param login: yandex account user name
         :param password: yandex account password
-        :raises: AuthenticationError if the credentials are not valid
+        :raises `exceptions.AuthenticationError`: if the credentials are not valid
         """
 
         self._login = login
@@ -128,12 +126,22 @@ class YaMusicClient(object):
 
         return self._access_token is not None and self._user_id is not None
 
+    def auth_required(method):
+        @functools.wraps(method)
+        def decorator(self, *args, **kwargs):
+            if not self.is_authenticated:
+                raise exceptions.AuthenticationError("Authentication required")
+
+            return method(self, *args, **kwargs)
+
+        return decorator
+
     def get_genres(self):
         """
         Returns a list of the available genres.
 
         :return: genre list
-        :rtype: `entities.Genre`
+        :rtype: `List[entities.Genre]`
         """
 
         path = 'genres'
@@ -143,8 +151,7 @@ class YaMusicClient(object):
 
     def get_playlists(self, user_id=None):
         """
-        Returns user's playlist list. If `user_id` argument is ommited current user_id is used.
-        If the user is not authenticated AttributeError is raised.
+        Returns user's playlist list. If `user_id` argument is ommited current user id is used.
 
         :param user_id: user id
         :return: playlist list
@@ -159,12 +166,12 @@ class YaMusicClient(object):
 
     def get_playlist(self, playlist_id, user_id=None, rich_tracks=True):
         """
-        Returns a user playlist. If `user_id` argument is ommited current user_id is used.
+        Returns a user's playlist by id. If `user_id` argument is ommited current user id is used.
 
         :param playlist_id: playlist id
         :param user_id: user id
         :param rich_tracks: whether to add additional information to tracks
-        :return: the required playlist
+        :return: the requested playlist
         :rtype: `entities.Playlist`
         """
 
@@ -180,11 +187,11 @@ class YaMusicClient(object):
 
     def get_playlist_by_title(self, title, user_id=None):
         """
-        Returns a user playlist by title. If `user_id` argument is ommited current user_id is used.
+        Returns a user's playlist by title. If `user_id` argument is ommited current user id is used.
 
         :param title: playlist title
         :param user_id: user id
-        :return: the required playlist
+        :return: the requested playlist
         :rtype: `entities.Playlist`
         """
 
@@ -196,6 +203,7 @@ class YaMusicClient(object):
 
         return self.get_playlist(playlist.kind, user_id)
 
+    @auth_required
     def create_playlist(self, title, visibility=entities.Visibility.private):
         """
         Creates a new playlist. Client should be authenticated on the service.
@@ -215,6 +223,7 @@ class YaMusicClient(object):
 
         return schemas.PlaylistSchema(envelope='result').loads(resp.text).data
 
+    @auth_required
     def delete_playlist(self, playlist_id):
         """
         Deletes playlist by id. Client should be authenticated on the service.
@@ -225,6 +234,7 @@ class YaMusicClient(object):
         path = 'users/{user_id}/playlists/{playlist_id}/delete'.format(user_id=self._user_id, playlist_id=playlist_id)
         self._request('POST', self.API_HOST, path)
 
+    @auth_required
     def rename_playlist(self, playlist_id, title):
         """
         Renames playlist by id. Client should be authenticated on the service.
@@ -240,12 +250,13 @@ class YaMusicClient(object):
 
         self._request('POST', self.API_HOST, path, data=data)
 
+    @auth_required
     def add_tracks_to_playlist(self, playlist_id, tracks, at_position=0, ignore_duplicates=False):
         """
         Adds tracks to the playlist. Client should be authenticated on the service.
 
-        :param playlist_id: playlist id to add track to
-        :param tracks: track list to add playlist
+        :param playlist_id: playlist id to add the tracks to
+        :param tracks: track list to add to the playlist
         :param at_position: position to add tracks at
         :param ignore_duplicates: ignore duplicate tracks
         """
@@ -273,13 +284,14 @@ class YaMusicClient(object):
 
         self._request('POST', self.API_HOST, path, data=data)
 
+    @auth_required
     def delete_tracks_from_playlist(self, playlist_id, from_track, to_track):
         """
-        Deletes tracks from playlist.
+        Deletes tracks from the playlist. Client should be authenticated on the service.
 
         :param playlist_id: playlist id
-        :param from_track: start tracks position to delete
-        :param to_track: end tracks position to delete
+        :param from_track: start position of the tracks to delete
+        :param to_track: end position of the tracks to delete
         """
 
         path = 'users/{user_id}/playlists/{playlist_id}/change-relative'.format(user_id=self._user_id, playlist_id=playlist_id)
@@ -305,7 +317,7 @@ class YaMusicClient(object):
         Makes a search query.
 
         :param query: query string
-        :param search_type: search type (all, artist, album, track)
+        :param search_type: search type (`SearchType.all`, `SearchType.artist`, `SearchType.album`, `SearchType.track`)
         :param page: result page number
         :return: the search result
         :rtype: `SearchResult`
@@ -327,8 +339,8 @@ class YaMusicClient(object):
 
         :param name: artist name
         :param page: result page number
-        :return: a list of the required artists
-        :rtype: `entities.Artist`
+        :return: a list of the requested artists
+        :rtype: `List[entities.Artist]`
         """
 
         return self.search(name, entities.SearchType.artist, page).artists
@@ -339,8 +351,8 @@ class YaMusicClient(object):
 
         :param title: album title
         :param page: result page number
-        :return: a list of the required albums
-        :rtype: `entities.Album`
+        :return: a list of the requested albums
+        :rtype: `List[entities.Album]`
         """
 
         return self.search(title, entities.SearchType.album, page).albums
@@ -351,8 +363,8 @@ class YaMusicClient(object):
 
         :param title: track title
         :param page: result page number
-        :return: a list of the required tracks
-        :rtype: `entities.Track`
+        :return: a list of the requested tracks
+        :rtype: `List[entities.Track]`
         """
 
         return self.search(title, entities.SearchType.track, page).tracks

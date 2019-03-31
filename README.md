@@ -1,30 +1,74 @@
 
 # Yandex Music client
 
-A python3 Yandex Music (https://music.yandex.ru) Library.
+A python3 [Yandex Music](https://music.yandex.ru) service library.
 
 This library doesn't provide an ability to download or listen audio tracks bypassing the
-official audio players, which violates the user agreements (https://yandex.ru/legal/music_termsofuse/). 
+official audio players, which violates the [user agreements](https://yandex.ru/legal/music_termsofuse/). 
 The purpose of the library is to provide a sufficient way of managing your audio tracks, backup your 
 playlists, import/export your playlists from/to your local audio library or other music services 
 like Spotify, Apple Music and so on.
 
-The library uses OAuth 2.0 protocol (https://oauth.net/2/) password grant type for the authentication, 
+The library uses [OAuth 2.0](https://oauth.net/2/) protocol password grant type for the authentication, 
 which means it doesn't store your password, instead it fetches a temporary token granted to access only
 your yandex music service data so that it doesn't jeopardize your privacy.
 
 **NB**: This module uses an unofficial Yandex Music service api that has been grasped through some 
 reverse engineering research which means it can be modified any time and the client would break down.
 
-## Dependencies
+# Dependencies
 
-* requests (http://docs.python-requests.org)
-* marshmallow (https://marshmallow.readthedocs.io)
-* attrs (https://www.attrs.org)
+* [requests](http://docs.python-requests.org)
+* [marshmallow](https://marshmallow.readthedocs.io)
+* [attrs](https://www.attrs.org)
 
 
-## Usage example
+# Usage example
 
+### Playlists backup
+```python
+
+import getpass
+import csv
+import sys
+
+from yamusic import client
+from yamusic import exceptions
+
+
+username = getpass.getuser()
+username = input("Login ({}): ".format(username)) or username
+password = getpass.getpass("Password: ")
+
+print("Connecting to Yandex Music...")
+
+try:
+    ym_client = client.YaMusicClient(username, password)
+except exceptions.AuthenticationError:
+    print("Authentication error: username or password is incorrect")
+    sys.exit(1)
+
+
+with open('playlist-backup.csv', 'w', newline='') as backup_file:
+    csv_writer = csv.DictWriter(backup_file, fieldnames=['playlist', 'artist', 'title', 'album'])
+    csv_writer.writeheader()
+
+    print("Downloading user's playlists...")
+
+    for playlist in ym_client.get_playlists():
+        print("Backing up '{}' playlist...".format(playlist.title))
+
+        for track in ym_client.get_playlist(playlist.kind):
+            csv_writer.writerow({
+                'playlist': playlist.title,
+                'artist': track.artists[0].name,
+                'title': track.title,
+                'album': track.albums[0].title if track.albums else '',
+            })
+
+```
+
+### Playlists manipulation
 ```python
 
 from yamusic.client import YaMusicClient
@@ -70,142 +114,485 @@ client.add_tracks_to_playlist(playlist.kind, tracks, ignore_duplicates=True)
 ```
 
 
-## API
+# API
 
-### yamusic.client.Client
+## yamusic.client
 
-**\_\_init__(login=None, password=None, device_id=None, uuid=None, auth_data=None)**
+Yandex music service client.
 
-Creates a client instance and authenticates on the service if `login` and `password` are provided.
+### YaMusicClient
+```python
+YaMusicClient(self, login=None, password=None, device_id=None, uuid=None, auth_data=None)
+```
 
-*Parameters*:
+A Yandex music service client. Creates a client instance and authenticates
+on the service if login and password are provided.
 
-- `login` - yandex account user name
-- `password` - yandex account password
-- `device_id` - local device id (will be automatically generated if ommited)
-- `uuid` - unique identifier (will be automatically generated if ommited)
-- `auth_data` - authentication data, (access_token, user_id) pair
+**Arguments**:
 
-**auth(login, password)**
+- `login`: yandex account user name
+- `password`: yandex account password
+- `device_id`: local device id (will be automatically generated if ommited)
+- `uuid`: unique identifier (will be automatically generated if ommited)
+- `auth_data`: authentication data, (access_token, user_id) pair
 
-Authenticates on the service as a `login` user.
-
-*Parameters*:
-
-- `login` - yandex account user name
-- `password` - yandex account password
-
-**is_authenticated**
+### is_authenticated
 
 Check if the user is authenticated.
 
-*Returns*: `True` if the user is authenticated otherwise `False`.
+**Returns**:
 
-*Return type*: `bool`
+`True` if the user is authenticated otherwise `False`
 
-**get_genres()**
+### auth
+```python
+YaMusicClient.auth(self, login, password)
+```
 
-Returns the available genres list.
+Authenticates on the service as a `login` user.
 
-*Returns*: The genres list.
+**Arguments**:
 
-*Return type*: `Genre`
+- `login`: yandex account user name
+- `password`: yandex account password
 
-**get_playlists(user_id=None)**
+**Raises**:
 
-Returns user's playlist list. If `user_id` argument is ommited current user_id is used. If user is not authenticated AttributError is raised.
+- ``exceptions.AuthenticationError``: if the credentials are not valid
 
-*Returns*: The genres list.
+### get_genres
+```python
+YaMusicClient.get_genres(self)
+```
 
-*Return type*: `List[Playlist]`
+Returns a list of the available genres.
 
-**get_playlist_by_title(self, title, user_id=None)**
+**Returns**:
 
-Returns a playlist with tittle `title` for user `user_id`. If `user_id` is ommited current user id is used.
+genre list
 
-*Parameters*:
+**Return Type**:
 
-- `title` - playlist title
-- `user_id` - user id
+`List[entities.Genre]`
 
-*Returns*: Playlist with title `title`.
+### get_playlists
+```python
+YaMusicClient.get_playlists(self, user_id=None)
+```
 
-*Return type*: `Playlist`
+Returns user's playlist list. If `user_id` argument is ommited current user id is used.
 
-**create_playlist(self, title, visibility=entities.Visability.private)**
+**Arguments**:
 
-Creates playlist. Client should be authenticated on the service.
+- `user_id`: user id
 
-*Parameters*:
+**Returns**:
 
-- `title` - playlist title
-- `visability` - playlist visibility
-   
-**delete_playlist(self, playlist_id)**
+playlist list
 
-Deletes playlist. Client should be authenticated on the service.
+**Return Type**:
 
-*Parameters*:
+`List[entities.Playlist]`
 
-- `playlist_id` - playlist id to delete
+### get_playlist
+```python
+YaMusicClient.get_playlist(self, playlist_id, user_id=None, rich_tracks=True)
+```
 
-**add_tracks_to_playlist(self, playlist_id, tracks, at_position=0, ignore_dublicates=False)**
+Returns a user's playlist by id. If `user_id` argument is ommited current user id is used.
 
-*(empty)*
+**Arguments**:
 
-**delete_tracks_from_playlist(self, playlist_id, from_track, to_track)**
+- `playlist_id`: playlist id
+- `user_id`: user id
+- `rich_tracks`: whether to add additional information to tracks
 
-*(empty)*
+**Returns**:
 
-**search(self, query, search_type=entities.SearchType.all, page = 0)**
+the requested playlist
 
-*(empty)*
+**Return Type**:
 
-**search_artist(self, name, page=0)**
+`entities.Playlist`
 
-*(empty)*
+### get_playlist_by_title
+```python
+YaMusicClient.get_playlist_by_title(self, title, user_id=None)
+```
 
-**search_album(self, title, page=0)**
+Returns a user's playlist by title. If `user_id` argument is ommited current user id is used.
 
-*(empty)*
+**Arguments**:
 
-**search_track(self, title, page=0)**
+- `title`: playlist title
+- `user_id`: user id
 
-*(empty)*
+**Returns**:
 
-**get_album(self, album_id, with_tracks=False)**
+the requested playlist
 
-*(empty)*
+**Return Type**:
 
-**get_similar_tracks(self, track_id)**
+`entities.Playlist`
 
-*Parameters*:
+### create_playlist
+```python
+YaMusicClient.create_playlist(self, title, visibility)
+```
 
-- `track_id` - track id
+Creates a new playlist. Client should be authenticated on the service.
 
-*Returns*: Returns tracks similar to the track with id `track_id`.
+**Arguments**:
 
-*Return Type*: `List[Track]`
+- `title`: new playlist title
+- `visibility`: new playlist visibility
 
-### yamusic.exceptions
+**Returns**:
 
-**class BaseError(Exception)**
+the created playlist
+
+**Return Type**:
+
+`entities.Playlist`
+
+### delete_playlist
+```python
+YaMusicClient.delete_playlist(self, playlist_id)
+```
+
+Deletes playlist by id. Client should be authenticated on the service.
+
+**Arguments**:
+
+- `playlist_id`: playlist id
+
+### rename_playlist
+```python
+YaMusicClient.rename_playlist(self, playlist_id, title)
+```
+
+Renames playlist by id. Client should be authenticated on the service.
+
+**Arguments**:
+
+- `playlist_id`: playlist id
+- `title`: new title
+
+### add_tracks_to_playlist
+```python
+YaMusicClient.add_tracks_to_playlist(self, playlist_id, tracks, at_position=0, ignore_duplicates=False)
+```
+
+Adds tracks to the playlist. Client should be authenticated on the service.
+
+**Arguments**:
+
+- `playlist_id`: playlist id to add the tracks to
+- `tracks`: track list to add to the playlist
+- `at_position`: position to add tracks at
+- `ignore_duplicates`: ignore duplicate tracks
+
+### delete_tracks_from_playlist
+```python
+YaMusicClient.delete_tracks_from_playlist(self, playlist_id, from_track, to_track)
+```
+
+Deletes tracks from the playlist.
+
+**Arguments**:
+
+- `playlist_id`: playlist id
+- `from_track`: start position of the tracks to delete
+- `to_track`: end position of the tracks to delete
+
+### search
+```python
+YaMusicClient.search(self, query, search_type, page=0)
+```
+
+Makes a search query.
+
+**Arguments**:
+
+- `query`: query string
+- `search_type`: search type (`SearchType.all`, `SearchType.artist`, `SearchType.album`, `SearchType.track`)
+- `page`: result page number
+
+**Returns**:
+
+the search result
+
+**Return Type**:
+
+`SearchResult`
+
+### search_artist
+```python
+YaMusicClient.search_artist(self, name, page=0)
+```
+
+Searches for the artist with name `name`.
+
+**Arguments**:
+
+- `name`: artist name
+- `page`: result page number
+
+**Returns**:
+
+a list of the requested artists
+
+**Return Type**:
+
+`List[entities.Artist]`
+
+### search_album
+```python
+YaMusicClient.search_album(self, title, page=0)
+```
+
+Searches for the album with title `title`.
+
+**Arguments**:
+
+- `title`: album title
+- `page`: result page number
+
+**Returns**:
+
+a list of the requested albums
+
+**Return Type**:
+
+`List[entities.Album]`
+
+### search_track
+```python
+YaMusicClient.search_track(self, title, page=0)
+```
+
+Searches for the track with title `title`.
+
+**Arguments**:
+
+- `title`: track title
+- `page`: result page number
+
+**Returns**:
+
+a list of the requested tracks
+
+**Return Type**:
+
+`List[entities.Track]`
+
+### get_album
+```python
+YaMusicClient.get_album(self, album_id)
+```
+
+Returns the album with `album_id` id
+
+**Arguments**:
+
+- `album_id`: album id
+
+**Returns**:
+
+the requested album
+
+**Return Type**:
+
+`entities.Album`
+
+### get_similar_tracks
+```python
+YaMusicClient.get_similar_tracks(self, track_id)
+```
+
+Returns tracks similar to the track with `track_id` id
+
+**Arguments**:
+
+- `track_id`: track id
+
+**Returns**:
+
+list of similar tracks
+
+**Return Type**:
+
+`List[entities.Track]`
+
+## yamusic.exceptions
+
+Exception classes for library-related errors.
+
+### BaseError
+```python
+BaseError(*args, **kwargs)
+```
 
 Base module exception.
 
-**class AuthenticationError(BaseError)**
+### AuthenticationError
+```python
+AuthenticationError(*args, **kwargs)
+```
 
-Raised when an authentication error occured (login or password are incorrect).
+Authentication error.
 
-**class ResponseFormatError(BaseError)**
+### ResponseFormatError
+```python
+ResponseFormatError(*args, **kwargs)
+```
 
-Raised when the response formant is incorrect. Typically indicates that the api data format has been changed.
+Response formant is not correct.
 
-**class NotFoundError(BaseError)**
+### NotFoundError
+```python
+NotFoundError(*args, **kwargs)
+```
 
-Raised when the requested object not found.
+Requested object not found.
+
+## yamusic.schemas
+
+Service entities serialization schemas.
+
+### BaseSchema
+```python
+BaseSchema(*args, envelope=None, many_envelope=None, **kwargs)
+```
+
+Base serialization schema. All schemas should be inherited from it.
+
+**Arguments**:
+
+- `args`: positional arguments to be passed to `marshmallow.Schema`
+- `envelope`: field that contains an object data
+- `many_envelope`: field that contains a list of objects if `many` argument is `True`
+- `kwargs`: named arguments to be passed to `marshmallow.Schema`
+
+### GenreSchema
+```python
+GenreSchema(*args, envelope=None, many_envelope=None, **kwargs)
+```
+
+Genre entity serialization schema.
+
+### UserSchema
+```python
+UserSchema(*args, envelope=None, many_envelope=None, **kwargs)
+```
+
+User entity serialization schema.
+
+### AlbumSchema
+```python
+AlbumSchema(*args, envelope=None, many_envelope=None, **kwargs)
+```
+
+Album entity serialization schema.
+
+### ArtistSchema
+```python
+ArtistSchema(*args, envelope=None, many_envelope=None, **kwargs)
+```
+
+Artist entity serialization schema.
+
+### TrackSchema
+```python
+TrackSchema(*args, envelope=None, many_envelope=None, **kwargs)
+```
+
+Track entity serialization schema.
+
+### PlaylistSchema
+```python
+PlaylistSchema(*args, envelope=None, many_envelope=None, **kwargs)
+```
+
+Playlist entity serialization schema.
+
+### SearchResultSchema
+```python
+SearchResultSchema(*args, envelope=None, many_envelope=None, **kwargs)
+```
+
+Search result entity serialization schema.
+
+## yamusic.entities
+
+Library types and entities.
+
+### Visibility
+```python
+Visibility(*args, **kwargs)
+```
+
+Visibility type enumeration.
+
+### Sex
+```python
+Sex(*args, **kwargs)
+```
+
+Sex type enumeration.
+
+### SearchType
+```python
+SearchType(*args, **kwargs)
+```
+
+Search type enumeration.
+
+### Genre
+```python
+Genre(id, title, fullTitle, tracksCount)
+```
+
+Music genre type.
+
+### User
+```python
+User(uid, login, name, verified, sex)
+```
+
+User type.
+
+### Album
+```python
+Album(id, title, year, trackCount, genre, releaseDate)
+```
+
+Album type.
+
+### Artist
+```python
+Artist(id, name, composer, genres)
+```
+
+Artist type.
+
+### Track
+```python
+Track(id, title, durationMs, albums, artists, available)
+```
+
+Audio track type.
+
+### Playlist
+```python
+Playlist(kind, title, created, modified, trackCount, durationMs, visibility, owner, tracks, revision)
+```
+
+Music playlist type. Represents a collection of tracks plus some metainformaion.
 
 
-## License
+
+
+# License
 
 Unlicense
