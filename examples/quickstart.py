@@ -2,7 +2,7 @@
 Quick start example.
 """
 
-from yamusic.client import YaMusicClient
+from yamusic import YaMusicClient
 
 
 client = YaMusicClient('user', 'password')
@@ -10,19 +10,19 @@ client = YaMusicClient('user', 'password')
 print("User's playlists:")
 for playlist in client.get_playlists():
     print("{title} ({track_count})".format(
-        title=playlist.title, 
-        track_count=playlist.trackCount)
+        title=playlist.title,
+        track_count=playlist.track_count)
     )
 
 
 playlist_name = 'Folk'
 print("{} playlist:".format(playlist_name))
 
-for track in client.get_playlist_by_title(playlist_name).tracks:
-    print("\t{title} - {authors} ({albums})".format(
-        title=track.title, 
-        authors=', '.join(track.authors), 
-        albums=', '.join(track.albums))
+for track in client.get_playlist(title=playlist_name, rich_tracks=True).tracks:
+    print("\t{title} - {artists} - {albums}".format(
+        title=track.title,
+        artists=', '.join(map(str, track.artists)),
+        albums=', '.join(map(str, track.albums)))
     )
 
 
