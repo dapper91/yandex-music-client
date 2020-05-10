@@ -13,7 +13,7 @@ The library uses [OAuth 2.0](https://oauth.net/2/) protocol password grant type 
 which means it doesn't store your password, instead it fetches a temporary token granted to access only
 your yandex music service data so that it doesn't jeopardize your privacy.
 
-**NB**: This module uses an unofficial Yandex Music service api that has been grasped through some 
+**NB**: This package uses an unofficial Yandex Music service api that has been grasped through some 
 reverse engineering research which means it can be modified any time and the client would break down.
 
 # Dependencies

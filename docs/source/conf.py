@@ -39,7 +39,7 @@ extensions = [
 
 html_theme_options = {
     'github_user': 'dapper91',
-    'github_repo': 'yamusic',
+    'github_repo': 'yandex-music-client',
     'github_banner': True,
 }
 
