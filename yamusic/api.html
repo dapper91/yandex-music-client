@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Developer Interface &#8212; yamusic 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to yamusic’s documentation!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-yamusic">
+<span id="developer-interface"></span><span id="api"></span><h1>Developer Interface<a class="headerlink" href="#module-yamusic" title="Permalink to this headline">¶</a></h1>
+<p>Yandex music client library.</p>
+<div class="section" id="module-yamusic.client">
+<span id="client"></span><h2>Client<a class="headerlink" href="#module-yamusic.client" title="Permalink to this headline">¶</a></h2>
+<p>Yandex music service client.</p>
+<dl class="py class">
+<dt id="yamusic.client.OAuthCred">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.client.</code><code class="sig-name descname">OAuthCred</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">access_token</span></em>, <em class="sig-param"><span class="n">user_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#yamusic.client.OAuthCred" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="yamusic.client.OAuthCred.access_token">
+<em class="property">property </em><code class="sig-name descname">access_token</code><a class="headerlink" href="#yamusic.client.OAuthCred.access_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.OAuthCred.user_id">
+<em class="property">property </em><code class="sig-name descname">user_id</code><a class="headerlink" href="#yamusic.client.OAuthCred.user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.client.YaMusicClient">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.client.</code><code class="sig-name descname">YaMusicClient</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">login</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">device_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">app_uuid</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">oauth_cred</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference internal" href="#yamusic.client.OAuthCred" title="yamusic.client.OAuthCred">yamusic.client.OAuthCred</a><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#yamusic.client.YaMusicClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Yandex music service client. Creates a client instance and authenticates
+on the service if login and password are provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> – yandex account user name</p></li>
+<li><p><strong>password</strong> – yandex account password</p></li>
+<li><p><strong>device_id</strong> – local device id (will be automatically generated if omitted)</p></li>
+<li><p><strong>app_uuid</strong> – unique identifier (will be automatically generated if omitted)</p></li>
+<li><p><strong>auth_cred</strong> – authentication data, (access_token, user_id) pair</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.auth">
+<code class="sig-name descname">auth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">login</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">password</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#yamusic.client.YaMusicClient.auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticates on the service as a <cite>login</cite> user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> – yandex account user name</p></li>
+<li><p><strong>password</strong> – yandex account password</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#yamusic.exceptions.AuthenticationError" title="yamusic.exceptions.AuthenticationError"><strong>exceptions.AuthenticationError</strong></a> – if the credentials are not valid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.logout">
+<code class="sig-name descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#yamusic.client.YaMusicClient.logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forget current user credentials.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.is_authenticated">
+<em class="property">property </em><code class="sig-name descname">is_authenticated</code><a class="headerlink" href="#yamusic.client.YaMusicClient.is_authenticated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the client is authenticated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><cite>True</cite> if the client is authenticated otherwise <cite>False</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.get_genres">
+<code class="sig-name descname">get_genres</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="#yamusic.models.Genre" title="yamusic.models.Genre">yamusic.models.Genre</a><span class="p">]</span><a class="headerlink" href="#yamusic.client.YaMusicClient.get_genres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of available genres.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>genre list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.get_playlists">
+<code class="sig-name descname">get_playlists</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">user_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="#yamusic.models.Playlist" title="yamusic.models.Playlist">yamusic.models.Playlist</a><span class="p">]</span><a class="headerlink" href="#yamusic.client.YaMusicClient.get_playlists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns user’s playlist list. If <cite>user_id</cite> argument is omitted current user id is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>user_id</strong> – user id</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>playlist list</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>List[entities.Playlist]</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.get_playlist">
+<code class="sig-name descname">get_playlist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">playlist_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">title</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rich_tracks</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span><a class="reference internal" href="#yamusic.models.Playlist" title="yamusic.models.Playlist">yamusic.models.Playlist</a><span class="p">[</span>TrackWrapper<span class="p">]</span><span class="p">, </span><a class="reference internal" href="#yamusic.models.Playlist" title="yamusic.models.Playlist">yamusic.models.Playlist</a><span class="p">[</span>Track<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#yamusic.client.YaMusicClient.get_playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a playlist by id or title. If <cite>user_id</cite> argument is omitted current user id is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>playlist_id</strong> – playlist id</p></li>
+<li><p><strong>title</strong> – playlist title</p></li>
+<li><p><strong>user_id</strong> – user id</p></li>
+<li><p><strong>rich_tracks</strong> – whether to add additional information to the tracks</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>requested playlist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.create_playlist">
+<code class="sig-name descname">create_playlist</code><span class="sig-paren">(</span><em class="sig-param">title: str</em>, <em class="sig-param">*</em>, <em class="sig-param">visibility: yamusic.models.Visibility = &lt;Visibility.PRIVATE: 'private'&gt;</em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#yamusic.models.Playlist" title="yamusic.models.Playlist">yamusic.models.Playlist</a><a class="headerlink" href="#yamusic.client.YaMusicClient.create_playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new playlist. Client should be authenticated on the service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – playlist title</p></li>
+<li><p><strong>visibility</strong> – playlist visibility</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>created playlist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.delete_playlist">
+<code class="sig-name descname">delete_playlist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">playlist_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#yamusic.client.YaMusicClient.delete_playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes playlist by an id. Client should be authenticated on the service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>playlist_id</strong> – playlist id</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.rename_playlist">
+<code class="sig-name descname">rename_playlist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">playlist_id</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">title</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#yamusic.client.YaMusicClient.rename_playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renames playlist by an id. Client should be authenticated on the service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>playlist_id</strong> – playlist id</p></li>
+<li><p><strong>title</strong> – new title</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.add_tracks_to_playlist">
+<code class="sig-name descname">add_tracks_to_playlist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">playlist_id</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tracks</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Union<span class="p">[</span><a class="reference internal" href="#yamusic.models.TrackWrapper" title="yamusic.models.TrackWrapper">yamusic.models.TrackWrapper</a><span class="p">, </span><a class="reference internal" href="#yamusic.models.Track" title="yamusic.models.Track">yamusic.models.Track</a><span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">at_position</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">ignore_duplicates</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#yamusic.client.YaMusicClient.add_tracks_to_playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds tracks to a playlist. Client should be authenticated on the service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>playlist_id</strong> – playlist id to add the tracks to</p></li>
+<li><p><strong>tracks</strong> – track list to add to the playlist</p></li>
+<li><p><strong>at_position</strong> – position to add tracks at</p></li>
+<li><p><strong>ignore_duplicates</strong> – ignore duplicate tracks</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.delete_tracks_from_playlist">
+<code class="sig-name descname">delete_tracks_from_playlist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">playlist_id</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">from_track</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">to_track</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#yamusic.client.YaMusicClient.delete_tracks_from_playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes tracks from the playlist. Client should be authenticated on the service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>playlist_id</strong> – playlist id</p></li>
+<li><p><strong>from_track</strong> – start position of the tracks to delete</p></li>
+<li><p><strong>to_track</strong> – end position of the tracks to delete</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.search">
+<code class="sig-name descname">search</code><span class="sig-paren">(</span><em class="sig-param">query: str</em>, <em class="sig-param">*</em>, <em class="sig-param">search_type: yamusic.models.SearchType = &lt;SearchType.ALL: 'all'&gt;</em>, <em class="sig-param">page: int = 0</em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#yamusic.models.SearchResult" title="yamusic.models.SearchResult">yamusic.models.SearchResult</a><a class="headerlink" href="#yamusic.client.YaMusicClient.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for entities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – query string</p></li>
+<li><p><strong>search_type</strong> – search type</p></li>
+<li><p><strong>page</strong> – result page number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>search result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.search_artist">
+<code class="sig-name descname">search_artist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">page</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="#yamusic.models.Artist" title="yamusic.models.Artist">yamusic.models.Artist</a><span class="p">]</span><a class="headerlink" href="#yamusic.client.YaMusicClient.search_artist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches for artists with the requested name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – artist name</p></li>
+<li><p><strong>page</strong> – result page number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of the requested artists</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.search_album">
+<code class="sig-name descname">search_album</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">page</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="#yamusic.models.Album" title="yamusic.models.Album">yamusic.models.Album</a><span class="p">]</span><a class="headerlink" href="#yamusic.client.YaMusicClient.search_album" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches for albums with the requested title.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – album title</p></li>
+<li><p><strong>page</strong> – result page number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of the requested albums</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.search_track">
+<code class="sig-name descname">search_track</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">page</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="#yamusic.models.Track" title="yamusic.models.Track">yamusic.models.Track</a><span class="p">]</span><a class="headerlink" href="#yamusic.client.YaMusicClient.search_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches for tracks with the requested title.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – track title</p></li>
+<li><p><strong>page</strong> – result page number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of the requested tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.get_album">
+<code class="sig-name descname">get_album</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">album_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="#yamusic.models.Album" title="yamusic.models.Album">yamusic.models.Album</a><span class="p">]</span><a class="headerlink" href="#yamusic.client.YaMusicClient.get_album" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an album with <cite>album_id</cite> id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>album_id</strong> – album id</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>requested album</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.client.YaMusicClient.get_similar_tracks">
+<code class="sig-name descname">get_similar_tracks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#yamusic.models.Similar" title="yamusic.models.Similar">yamusic.models.Similar</a><a class="headerlink" href="#yamusic.client.YaMusicClient.get_similar_tracks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns tracks similar to the track with <cite>track_id</cite> id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>track_id</strong> – track id</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of similar tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-yamusic.models">
+<span id="models"></span><h2>Models<a class="headerlink" href="#module-yamusic.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="yamusic.models.Visibility">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">Visibility</code><a class="headerlink" href="#yamusic.models.Visibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visibility.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.Sex">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">Sex</code><a class="headerlink" href="#yamusic.models.Sex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sex.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.SearchType">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">SearchType</code><a class="headerlink" href="#yamusic.models.SearchType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search type.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.Genre">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">Genre</code><a class="headerlink" href="#yamusic.models.Genre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Music genre model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – genre identifier</p></li>
+<li><p><strong>title</strong> – genre title</p></li>
+<li><p><strong>full_title</strong> – genre full title</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.User">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">User</code><a class="headerlink" href="#yamusic.models.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>User model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uid</strong> – user identifier</p></li>
+<li><p><strong>login</strong> – user login name</p></li>
+<li><p><strong>sex</strong> – user sex</p></li>
+<li><p><strong>verified</strong> – whether user is verified</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.Album">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">Album</code><a class="headerlink" href="#yamusic.models.Album" title="Permalink to this definition">¶</a></dt>
+<dd><p>Album model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – album identifier</p></li>
+<li><p><strong>title</strong> – album title</p></li>
+<li><p><strong>track_count</strong> – album tracks count</p></li>
+<li><p><strong>genre</strong> – album genre</p></li>
+<li><p><strong>year</strong> – album recording year</p></li>
+<li><p><strong>release_date</strong> – album release date</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.Artist">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">Artist</code><a class="headerlink" href="#yamusic.models.Artist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Artist model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – artist identifier</p></li>
+<li><p><strong>name</strong> – artist name</p></li>
+<li><p><strong>composer</strong> – whether artist is a composer</p></li>
+<li><p><strong>genres</strong> – artist genre list</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.Track">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">Track</code><a class="headerlink" href="#yamusic.models.Track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Audio track model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – track identifier</p></li>
+<li><p><strong>title</strong> – track title</p></li>
+<li><p><strong>albums</strong> – track albums</p></li>
+<li><p><strong>artists</strong> – track artists</p></li>
+<li><p><strong>available</strong> – whether track available</p></li>
+<li><p><strong>lyrics_available</strong> – whether lyrics available</p></li>
+<li><p><strong>type</strong> – track type</p></li>
+<li><p><strong>duration_ms</strong> – track duration</p></li>
+<li><p><strong>real_id</strong> – track read id</p></li>
+<li><p><strong>cover_uri</strong> – track cover url</p></li>
+<li><p><strong>major</strong> – track major (label)</p></li>
+<li><p><strong>files_size</strong> – track file size</p></li>
+<li><p><strong>normalization</strong> – track audio normalization information</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="yamusic.models.Track.album_id">
+<em class="property">property </em><code class="sig-name descname">album_id</code><a class="headerlink" href="#yamusic.models.Track.album_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns track album identifier.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.models.Track.uid">
+<em class="property">property </em><code class="sig-name descname">uid</code><a class="headerlink" href="#yamusic.models.Track.uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Playlist unique identifier.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.TrackWrapper">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">TrackWrapper</code><a class="headerlink" href="#yamusic.models.TrackWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Audio track wrapper model. Contains</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – track identifier</p></li>
+<li><p><strong>album_id</strong> – track album identifier</p></li>
+<li><p><strong>timestamp</strong> – track timestamp</p></li>
+<li><p><strong>track</strong> – detailed track information</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="yamusic.models.TrackWrapper.is_rich">
+<em class="property">property </em><code class="sig-name descname">is_rich</code><a class="headerlink" href="#yamusic.models.TrackWrapper.is_rich" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether track wrapper is reach (contains detailed track information).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.models.TrackWrapper.uid">
+<em class="property">property </em><code class="sig-name descname">uid</code><a class="headerlink" href="#yamusic.models.TrackWrapper.uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Playlist unique identifier.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="yamusic.models.TrackWrapper.unwrap">
+<code class="sig-name descname">unwrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#yamusic.models.Track" title="yamusic.models.Track">yamusic.models.Track</a><a class="headerlink" href="#yamusic.models.TrackWrapper.unwrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns detailed track information if wrapper is reach, raise <cite>ValueError</cite> exception otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.Similar">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">Similar</code><a class="headerlink" href="#yamusic.models.Similar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar tracks request result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>track</strong> – requested track</p></li>
+<li><p><strong>similar_tracks</strong> – list of similar tracks</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.Playlist">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">Playlist</code><a class="headerlink" href="#yamusic.models.Playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Music playlist model. Represents a collection of tracks plus some meta-information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> – playlist identifier</p></li>
+<li><p><strong>title</strong> – playlist title</p></li>
+<li><p><strong>track_count</strong> – playlist track count</p></li>
+<li><p><strong>owner</strong> – playlist owner</p></li>
+<li><p><strong>tags</strong> – playlist tag list</p></li>
+<li><p><strong>cover</strong> – playlist cover</p></li>
+<li><p><strong>track_ids</strong> – playlist track id list</p></li>
+<li><p><strong>duration</strong> – playlist duration</p></li>
+<li><p><strong>tracks</strong> – playlist track list</p></li>
+<li><p><strong>modified</strong> – playlist last modification time</p></li>
+<li><p><strong>revision</strong> – playlist revision number (modification counter)</p></li>
+<li><p><strong>visibility</strong> – whether playlist is visible</p></li>
+<li><p><strong>likes_count</strong> – plyalsit likes count</p></li>
+<li><p><strong>collective</strong> – whether playlist is collective</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="yamusic.models.Playlist.uid">
+<em class="property">property </em><code class="sig-name descname">uid</code><a class="headerlink" href="#yamusic.models.Playlist.uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Playlist unique identifier.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="yamusic.models.SearchResult">
+<em class="property">class </em><code class="sig-prename descclassname">yamusic.models.</code><code class="sig-name descname">SearchResult</code><a class="headerlink" href="#yamusic.models.SearchResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>albums</strong> – list of found albums</p></li>
+<li><p><strong>artists</strong> – list of found artists</p></li>
+<li><p><strong>tracks</strong> – list of found tracks</p></li>
+<li><p><strong>playlists</strong> – list of found playlists</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="section" id="module-yamusic.exceptions">
+<span id="exceptions"></span><h3>Exceptions<a class="headerlink" href="#module-yamusic.exceptions" title="Permalink to this headline">¶</a></h3>
+<p>Exception classes for library-related errors.</p>
+<dl class="py exception">
+<dt id="yamusic.exceptions.BaseError">
+<em class="property">exception </em><code class="sig-prename descclassname">yamusic.exceptions.</code><code class="sig-name descname">BaseError</code><a class="headerlink" href="#yamusic.exceptions.BaseError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base module exception.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="yamusic.exceptions.AuthenticationError">
+<em class="property">exception </em><code class="sig-prename descclassname">yamusic.exceptions.</code><code class="sig-name descname">AuthenticationError</code><a class="headerlink" href="#yamusic.exceptions.AuthenticationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authentication error.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="yamusic.exceptions.ResponseFormatError">
+<em class="property">exception </em><code class="sig-prename descclassname">yamusic.exceptions.</code><code class="sig-name descname">ResponseFormatError</code><a class="headerlink" href="#yamusic.exceptions.ResponseFormatError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Response formant is not correct.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="yamusic.exceptions.NotFoundError">
+<em class="property">exception </em><code class="sig-prename descclassname">yamusic.exceptions.</code><code class="sig-name descname">NotFoundError</code><a class="headerlink" href="#yamusic.exceptions.NotFoundError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requested object not found.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">yamusic</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=dapper91&repo=yandex-music-client&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-yamusic.client">Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-yamusic.models">Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-yamusic.exceptions">Exceptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to yamusic’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Dmitry Pershin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/yamusic/api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/dapper91/yandex-music-client" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
